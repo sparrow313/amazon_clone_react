@@ -3,9 +3,10 @@ import Subtotal from "./Subtotal";
 import "./Checkout.css";
 import CheckoutProduct from "./CheckoutProduct";
 import { useStateValue } from "./StateProvider";
+import userEvent from "@testing-library/user-event";
 
 const Checkout = () => {
-  const [{ basket }] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
 
   return (
     <div className="checkout">
@@ -16,6 +17,7 @@ const Checkout = () => {
           alt=""
         />
         <div>
+          <h3>Hello, {user?.email}</h3>
           <h2 className="checkout__title">Your Shoping Basket</h2>
 
           {basket.map((item) => (
